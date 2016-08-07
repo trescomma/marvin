@@ -19,7 +19,8 @@ class EventsPage extends React.Component{
 
 function mapStateToProps (state) {
   return {
-    events: state.events
+    events: state.events,
+    user: state.user
   };
 };
 

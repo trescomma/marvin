@@ -14,9 +14,11 @@ class Nav extends React.Component {
 
   render() {
     console.log('propssss', this.props.user);
+
     if(!this.props.user.username){
       return (
         <nav className="container-fluid">
+          <button onClick={ ()=>this.forceUpdate() }>CLICK ME </button>
           <div className="row text-center navbar">
            <div className="col-md-4 col-sm-4"> MARVIN </div>
             <Link to="/"><div className="col-md-2 col-sm-2 navpad">Home</div></Link>
@@ -38,6 +40,7 @@ class Nav extends React.Component {
 }
 
 function mapStateToProps (state) {
+  console.log('MAPSATATET',state);
   return {
     user: state.user
   };
