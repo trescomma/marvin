@@ -8,3 +8,8 @@ body {
 .top {
  margin-top: 20%;
 }
+
+.eventContainer {
+  background-color: white;
+  opacity: 0.9;
+}

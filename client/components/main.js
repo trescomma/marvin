@@ -1,7 +1,5 @@
 import React from 'react';
-import Search from '../containers/Search.js'
-import Nav from './Nav'
-
+import Nav from './Nav';
 
 export default class main extends React.Component {
   constructor(props){
@@ -13,7 +11,6 @@ export default class main extends React.Component {
       <div>
       <Nav />
         {this.props.children}
-        <Search />
       </div>
       )
   }

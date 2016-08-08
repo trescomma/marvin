@@ -15,7 +15,7 @@ export default (props) => (
     <Link className="navbar-brand" to="/">MARVIN</Link>
     <ul className="nav navbar-nav pull-xs-right">
       <li className="nav-item active">
-        <Link className="nav-link" to="/search">Search</Link>
+        <Link className="nav-link" to="/">Search</Link>
       </li>
       <li className="nav-item">
         <LoginLink className="nav-link">Login</LoginLink>

@@ -3,7 +3,8 @@ import React from 'react';
 import { setEvents } from '../actions/index.js'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import axios from 'axios'
+import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 var categories = [
   { value: 103, cat: 'Music' },
@@ -46,7 +47,15 @@ class Search extends React.Component {
     })
   }
   searchEvents (search) {
-    axios.post('/search', search);
+    //clear state
+    this.props.setEvents([]);
+    //then do search stuff
+    var context = this;
+    axios.post('/search', search).then(function(data) {
+      console.log(data.data.events);
+      context.props.setEvents(data.data.events);
+    });
+    browserHistory.push('/results');
   }
 
   render() {

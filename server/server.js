@@ -33,6 +33,7 @@ app.post('/search', function(request, response) {
   helpers.searchEventBrite(category, query, function(data) {
     response.send(200, data);
   });
+
 });
 
 app.on('stormpath.ready', function() {

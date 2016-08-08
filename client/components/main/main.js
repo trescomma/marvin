@@ -16,9 +16,6 @@ export default class main extends React.Component {
         <div className="row">
           {this.props.children}
         </div>
-        <div className="row text-xs-center">
-         <Search />
-        </div>
       </div>
       </div>
       )
