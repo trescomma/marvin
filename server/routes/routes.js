@@ -26,7 +26,12 @@ module.exports = function(app, express) {
   /* API Routes  */
 
   app.post('/api/eventbrite', function(req, res){
-    res.send(200);
+    var query = req.body.query;
+    var category = req.body.category;
+
+    helpers.searchEventBrite(category, query, function(data) {
+      res.send(200, data);
+    });
   });
 
   // This route will handle all API queries for yelp

@@ -51,8 +51,7 @@ class Search extends React.Component {
     this.props.setEvents([]);
     //then do search stuff
     var context = this;
-    axios.post('/search', search).then(function(data) {
-      console.log(data.data.events);
+    axios.post('/api/eventbrite', search).then(function(data) {
       context.props.setEvents(data.data.events);
     });
     browserHistory.push('/results');
