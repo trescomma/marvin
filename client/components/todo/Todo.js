@@ -28,6 +28,12 @@ export default class Todos extends React.Component {
     document.getElementById('todo-input').value = '';
   }
 
+  deleteTodo(i) {
+    this.setState({
+      todos: this.state.todos.filter((x,j) => j !== i)
+    })
+  }
+
   render() {
     return (
       <div>
@@ -37,7 +43,13 @@ export default class Todos extends React.Component {
           <h3>Todos</h3>
           <div>
             {
-              this.state.todos.map(todo => <div> { todo } </div>)
+              this.state.todos.map((todo, i)=> {
+                return (
+                  <div onClick={this.deleteTodo.bind(this, i)}>
+                    { todo }
+                  </div>
+                )
+              })
             }
           </div>
         </div>
