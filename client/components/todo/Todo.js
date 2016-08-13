@@ -12,18 +12,19 @@ export default class Todos extends React.Component {
   }
 
   handleChange() {
-    let todo = document.getElementById('todo-input')
+    let todo = document.getElementById('todo-input').value;
 
     this.setState({
-      textInput: ''
+      textInput: todo
     });
+    console.log(this.state);
   }
 
   render() {
     return (
       <div>
-        <input type="text"></input>
-        <button></button>
+        <input id="todo-input" type="text" onChange={this.handleChange.bind(this)}></input>
+        <button>Add Task</button>
       </div>
     )
   }
