@@ -14,7 +14,7 @@ const components = [
   { title: 'Calendar',          component: null ,           boot: 'col-xs-6' },
   { title: 'Wellness Tracker',  component: null ,           boot: 'col-xs-6' },
   { title: 'Arduino',           component: null ,           boot: 'col-xs-6' },
-  { title: 'Lights',            component: <Lights /> ,           boot: 'col-xs-6' }
+  { title: 'Lights',            component: <Lights /> ,           boot: 'col-xs-6' },
   { title: 'Payment Reminders', component: null ,           boot: 'col-xs-6' }
 ];
 
