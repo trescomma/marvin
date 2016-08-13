@@ -17,14 +17,30 @@ export default class Todos extends React.Component {
     this.setState({
       textInput: todo
     });
-    console.log(this.state);
+  }
+
+  addTodo(todo) {
+    this.setState({
+      todos: this.state.todos.concat(todo)
+    })
+
+    //Sets text input back to blank
+    document.getElementById('todo-input').value = '';
   }
 
   render() {
     return (
       <div>
-        <input id="todo-input" type="text" onChange={this.handleChange.bind(this)}></input>
-        <button>Add Task</button>
+        <input id="todo-input" type="text" onChange={ this.handleChange.bind(this) }></input>
+        <button onClick={ this.addTodo.bind(this, this.state.textInput) }>Add Task</button>
+        <div>
+          <h3>Todos</h3>
+          <div>
+            {
+              this.state.todos.map(todo => <div> { todo } </div>)
+            }
+          </div>
+        </div>
       </div>
     )
   }
