@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { setTodos } from '../actions/index.js'
 
 export default class Todos extends React.Component {
   constructor(props) {
@@ -66,7 +67,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    setTodos: null
+    setTodos: setTodos
   }, dispatch);
 };
 

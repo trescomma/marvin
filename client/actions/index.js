@@ -32,3 +32,10 @@ export function setLights (lights) {
     payload: lights
   };
 }
+
+export function setTodos (todos) {
+  return {
+    type: SET_TODOS,
+    payload: todos
+  };
+}
