@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setTodos } from '../actions/index.js'
+import { setTodos } from '../../actions/index.js'
 
 export default class Todos extends React.Component {
   constructor(props) {
