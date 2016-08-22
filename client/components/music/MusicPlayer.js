@@ -33,7 +33,12 @@ export default class MusicPlayer extends React.Component {
     axios.post('/api/spotify', { q:track }).then(function(data) {
       context.props.setTracks(data.data.tracks.items);
       context.setState({
-        tracks: data.data.tracks.items
+        tracks: data.data.tracks.items.reduce((memo, track) => {
+          if (memo.length < 8) {
+            memo.push(track);
+          }
+          return memo;
+        }, [])
       });
     })
   }
@@ -69,8 +74,9 @@ export default class MusicPlayer extends React.Component {
           <button className="btn btn-default btn-padding" onClick={ this.playPauseTrack.bind(this) } >Play/Pause</button>
           { this.state.tracks.map((track, i) => {
               return (
-                <div className="track-name" onClick={this.setTrack.bind(this, i)}>
-                  <img src={ track.album.images[0].url } className="col-xs-3"></img>
+                <div className="track-name pre-scrollable" style={ { textAlign: "left", overflow: "auto" } } onClick={this.setTrack.bind(this, i)}>
+                  <img src={ track.album.images[0].url } height={ 40 }></img>
+                  { track.name }
                 </div>
               )
             })
