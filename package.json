@@ -46,6 +46,7 @@
     "path": "^0.12.7",
     "react": "^15.3.0",
     "react-big-calendar": "^0.10.3",
+    "react-datepicker": "^0.29.0",
     "react-dom": "^15.3.0",
     "react-fontawesome": "^1.1.0",
     "react-loader": "^2.4.0",

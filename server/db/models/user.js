@@ -4,11 +4,11 @@ var EventItem = require("./eventItems");
 
 
 var userSchema = new mongoose.Schema({
-    email: String,
+    email: {type: String, unique: true, lowercase: true},
     firstName: String,
     lastName: String,
-    eventItems:{
-        type:[{
+    eventItems: {
+        type: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "EventItem"
         }]

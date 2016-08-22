@@ -116,6 +116,8 @@ module.exports = function(app, express) {
 
     const params = req.body.params;
 
+    console.log(params);
+
     google.queryToken(function(auth){
        google.saveToCalendar(auth, params, function(confirmation){
         console.log(confirmation);

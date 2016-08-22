@@ -6,6 +6,7 @@ import Lights from '../components/lights/Lights';
 import Todos from '../components/todo/Todo';
 import Weather from '../components/weather/Weather';
 import News from '../components/news/News';
+import Reminders from '../components/reminders/reminders';
 import ResizableAndMovable from 'react-resizable-and-movable';
 
 const style = {
@@ -19,7 +20,7 @@ const style = {
 var components = [
   { title: 'Music Player',      component: <MusicPlayer />, x: 200, y: 20, w: 300, h: 350 },
   { title: 'Saved Events',      component: null ,           x: 200, y: 400, w: 300, h: 350 },
-  { title: 'Reminders',         component: null ,           x: 540, y: 400, w: 300, h: 350 },
+  { title: 'Reminders',         component: <Reminders /> ,           x: 540, y: 400, w: 300, h: 350 },
   { title: 'Todays Weather',    component: <Weather />,     x: 540, y: 20, w: 300, h: 350 },
   { title: 'Interests',         component: null ,           x: 880, y: 20, w: 300, h: 350 },
   { title: 'To-do List',        component: <Todos />,       x: 1220, y: 20, w: 300, h: 350 },
@@ -57,7 +58,6 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         {
