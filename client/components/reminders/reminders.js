@@ -24,6 +24,42 @@ export default class Reminders extends React.Component{
     this.handleHours = this.handleHours.bind(this);
     this.handleMin = this.handleMin.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.saveReminder = this.saveReminder.bind(this);
+  }
+
+  saveReminder(eventTime, cb){
+    const params = {
+      event:{
+        name: {
+          text: this.state.reminder
+        },
+        description:{
+          text: this.state.remidner
+        },
+        start:{
+          local: eventTime
+        },
+        end:{
+          local: eventTime
+        }
+      }
+    };
+
+    axios.post('/calendar/save', {
+        params
+      })
+      .then(function (data) {
+        cb(data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  }
+
+  convertDate(momentItem,hour,min){
+    momentItem.hour(hour);
+    momentItem.minute(min);
   }
 
   handleSubmit(){
@@ -35,22 +71,39 @@ export default class Reminders extends React.Component{
     const now = moment();
     //convert hour depending on ampm
 
-    if(when ==='pm') hour += 12;
+    if(when ==='pm' && hour != 12) hour = Number(hour) + 12;
 
     //same date, later time
-    if(date.get('year') === now.get('year') &&
-      date.get('month') === now.get('month') &&
-      date.get('date') === now.get('date') &&
-      hour>=now.hour() &&
+    if(date.get('year') == now.get('year') &&
+      date.get('month') == now.get('month') &&
+      date.get('date') == now.get('date') &&
+      hour==now.hour() &&
       min > now.minute()){
 
-      console.log('this would pass the test');
+      this.convertDate(date,hour,min);
+      this.saveReminder(date.format(), function(d){
+        console.log(d);
+      });
+
     //future date
+    }else if(date.get('year') == now.get('year') &&
+      date.get('month') == now.get('month') &&
+      date.get('date') == now.get('date') &&
+      hour > now.hour()){
+
+      this.convertDate(date,hour,min);
+      this.saveReminder(date.format(), function(d){
+        console.log(d);
+      });
+
     }else if(date.get('year') >= now.get('year') &&
       date.get('month') >= now.get('month') &&
       date.get('date') > now.get('date')){
 
-      console.log('this would pass the test');
+       this.convertDate(date,hour,min);
+       this.saveReminder(date.format(), function(d){
+        console.log(d);
+       });
     }else{
       this.setState({
         errMsg: 'You need to pick a future time!'
