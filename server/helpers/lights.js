@@ -6,7 +6,9 @@ const lightsurl = process.env.LIGHTS_URL || require('../../lightsurl').url;
 exports.getStatus = function (cb) {
   const light = {};
   request.get(lightsurl, function(error, res, body) {
-    if (error) {throw error;}
+    if (error) {
+      light.status = 'N/A';
+    }
     if(JSON.parse(body).value === null || JSON.parse(body).value === '0') {
       light.status = 'off';
     } else {
@@ -20,7 +22,9 @@ exports.getStatus = function (cb) {
 exports.toggle = function (cb) {
   const light = {};
   request.post(lightsurl, function(error, res, body) {
-    if (error) {throw error;}
+    if (error) {
+      light.status = 'N/A';
+    }
     if(JSON.parse(body).value === null || JSON.parse(body).value === '0') {
       light.status = 'off';
     } else {
